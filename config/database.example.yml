@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: dry-rails-api_development
+
+test:
+  <<: *default
+  database: dry-rails-api_test
+
+production:
+  <<: *default
+  database: dry-rails-api_production
+  username: dry-rails-api
+  password: <%= ENV['DRY-RAILS-API_DATABASE_PASSWORD'] %>
